@@ -1,0 +1,5 @@
+create table hrdetails(username varchar(100),password varchar(100))
+
+insert into hrdetails values('admin','admin')
+
+select * from hrdetails

@@ -12,7 +12,7 @@
 	<div class="container">
 	<h5>Fill the application form:</h5>
 	<br>
-	<form action="">
+	<form action="empregister.jsp">
 	 <div class="form-group">
 	 <div class="col-lg-3">
        <label for="usr">Enter the name:</label>

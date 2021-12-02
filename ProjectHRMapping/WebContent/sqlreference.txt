@@ -3,3 +3,5 @@ create table hrdetails(username varchar(100),password varchar(100))
 insert into hrdetails values('admin','admin')
 
 select * from hrdetails
+
+create table empdetails(username varchar(100),pass varchar(100),email varchar(100),dob varchar(100),phone varchar(100),gender varchar(100))

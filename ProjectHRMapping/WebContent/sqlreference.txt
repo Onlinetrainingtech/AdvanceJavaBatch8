@@ -5,3 +5,5 @@ insert into hrdetails values('admin','admin')
 select * from hrdetails
 
 create table empdetails(username varchar(100),pass varchar(100),email varchar(100),dob varchar(100),phone varchar(100),gender varchar(100))
+
+create table skillset(name varchar(100),id varchar(100),nobatch varchar(100),nostudent varchar(100),postingfrom varchar(100),postingto varchar(100),coursehand varchar(100),comment varchar(100),status varchar(100))

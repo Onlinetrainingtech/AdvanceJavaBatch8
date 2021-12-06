@@ -11,7 +11,7 @@
 	<div class="container">
 	  <h4>Fill the Application Form:</h4>
 	  <br>
-	  <form action="">
+	  <form action="skillsetregisterpage.jsp">
 		<div class="form-goup">
 			<div class="col-lg-3"><label for="name1">Enter your name:</label></div>
 			<div class="col-lg-6"><input type="text" name="name1" class="form-control"></div>

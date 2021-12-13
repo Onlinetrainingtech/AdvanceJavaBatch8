@@ -8,7 +8,20 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
+	<%
 	
+	HttpSession session1=request.getSession();
+	
+	String usr=(String)session.getAttribute("u");
+	
+	Class.forName("org.h2.Driver");
+	Connection con=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/advancejava8","sa","");
+	Statement st=con.createStatement();
+
+	 String str="select * from skillset where name='"+usr+"'";
+	ResultSet rs=st.executeQuery(str);
+	rs.next();
+	%>
 	<br>
 	<div class="container">
 	<h5>Update the application form:</h5>
@@ -19,7 +32,7 @@
        <label for="usr">Enter the name:</label>
        </div>
        <div class="col-lg-6">
-       <input type="text" class="form-control" name="usr" value=""   >
+       <input type="text" class="form-control" name="usr" value="<%=rs.getString(1) %>"   >
        </div>
        
        <div class="col-lg-12"><br></div>
@@ -28,7 +41,7 @@
        <label for="pwd">Enter the password:</label>
        </div>
        <div class="col-lg-6">
-       <input type="password" class="form-control" name="pwd" value=""   >
+       <input type="password" class="form-control" name="pwd" value="<%=rs.getString(2) %>"   >
        </div>
        
        <div class="col-lg-12"><br></div>
@@ -37,16 +50,22 @@
        <label for="email">Enter the email address:</label>
        </div>
        <div class="col-lg-6">
-       <input type="text" class="form-control" name="email"  value=""   >
+       <input type="text" class="form-control" name="email"  value="<%=rs.getString(3) %>"   >
        </div>
        
         <div class="col-lg-12"><br></div>
+       <%
        
+         String gen=rs.getString(6);
+       %>
        
        <div class="col-lg-3">
        <label for="phno">Enter the gender:</label>
        </div>
-      
+        <%
+           if(gen.equalsIgnoreCase("male"))
+           {
+        %>
        <div class="col-lg-6">
       <label class="radio-inline">
       <input type="radio" name="gender" value="Male" checked="checked">MALE
@@ -56,9 +75,21 @@
    	 </label>
    	 </div> 
    	 
-       
+       <% }
+        
+           else
+           {%>
      
-   	
+   	<div class="col-lg-6">
+      <label class="radio-inline">
+      <input type="radio" name="gender" value="Male" checked="checked">MALE
+   		 </label>
+   	 <label class="radio-inline">
+      <input type="radio" name="gender" value="Female">FEMALE
+   	 </label>
+   	 </div> 
+   	 
+   	 <%} %>
    	 
    	  <div class="col-lg-12"><br></div>
         

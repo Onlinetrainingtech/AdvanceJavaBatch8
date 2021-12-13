@@ -9,6 +9,14 @@
 <body>
 <jsp:include page="header.jsp" />
 
+<%
+Class.forName("org.h2.Driver");
+Connection con=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/advancejava8","sa","");
+Statement st=con.createStatement();
+String str="select * from empdetails";
+ResultSet rs=st.executeQuery(str);
+%>
+
 		<br>
 		<div class="container">
 		<table class="table table-striped">
@@ -22,15 +30,20 @@
 		</tr>
 		</thead>
 		<tbody>
-		
+		<%
+		  while(rs.next()){%>
+			  
+		 
 		<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td><%= rs.getString(1) %></td>
+		<td><%= rs.getString(3) %></td>
+		<td><%= rs.getString(4) %></td>
+		<td><%= rs.getString(5) %></td>
+		<td><%= rs.getString(6) %></td>
 		</tr>
-		
+		<%
+		 }
+		%>
 		</tbody>
 		</table>
 				

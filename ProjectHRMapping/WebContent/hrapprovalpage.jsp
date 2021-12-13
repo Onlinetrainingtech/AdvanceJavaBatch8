@@ -8,11 +8,25 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
+		<%
+		   
+		String a=request.getParameter("person");
 		
+		HttpSession sess=request.getSession();
+		
+		sess.setAttribute("uname",a);
+		
+		Class.forName("org.h2.Driver");
+		Connection con=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/advancejava8","sa","");
+		Statement st=con.createStatement();
+		String str="select * from skillset where name='"+a+"'";
+		ResultSet rs=st.executeQuery(str);
+		rs.next();
+		%>
 		<br>
 		<br>
 		<div class="container">
-		<form action="employeeupdate.jsp">
+		<form action="skillsetupdate.jsp">
 		<table class="table table-striped">
 		<thead>
 		<tr>
@@ -30,14 +44,14 @@
 		<tbody>
 		
 		<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td><%=rs.getString(1) %></td>
+		<td><%=rs.getString(2) %></td>
+		<td><%=rs.getString(3) %></td>
+		<td><%=rs.getString(4) %></td>
+		<td><%=rs.getString(5) %></td>
+		<td><%=rs.getString(6) %></td>
+		<td><%=rs.getString(7) %></td>
+		<td><%=rs.getString(8) %></td>
 		<td>
 		<div class="form-group">
 		<select class="form-control" name="status">
